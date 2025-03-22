@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Quiz App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Start Screen -->
+        <div id="start-screen" class="screen">
+            <div class="welcome-cat">
+                <!-- Orange cat illustration -->
+                <div class="cat-illustration">
+                    <div class="cat-head">
+                        <div class="cat-ears">
+                            <div class="ear left"></div>
+                            <div class="ear right"></div>
+                        </div>
+                        <div class="cat-face">
+                            <div class="eyes">
+                                <div class="eye left"></div>
+                                <div class="eye right"></div>
+                            </div>
+                            <div class="nose"></div>
+                            <div class="mouth"></div>
+                        </div>
+                    </div>
+                    <div class="cat-body">
+                        <div class="chest"></div>
+                        <div class="tail"></div>
+                    </div>
+                </div>
+            </div>
+            <h1>Pop Quiz!! Let’s test that brain! 🧠⚡</h1>
+            <button id="start-btn" class="btn">Start Quiz</button>
+            <button id="highscores-btn" class="btn secondary">View High Scores</button>
+        </div>
+
+        <!-- Quiz Screen -->
+        <div id="quiz-screen" class="screen hide">
+            <div class="header">
+                <div class="progress-bar">
+                    <div id="progress" class="progress"></div>
+                </div>
+                <div class="quiz-info">
+                    <span id="question-number">Question 1/10</span>
+                    <span id="current-score">Score: 0</span>
+                </div>
+            </div>
+            <div class="question-container">
+                <h2 id="question-text"></h2>
+                <div id="answers" class="answers-grid"></div>
+            </div>
+        </div>
+
+        <!-- Results Screen -->
+        <div id="results-screen" class="screen hide">
+            <h2>Quiz Complete!</h2>
+            <div class="score-details">
+                <p>Your Score: <span id="final-score">0</span></p>
+                <p>Time Taken: <span id="time-taken">0:00</span></p>
+            </div>
+            <input type="text" id="username" placeholder="Enter your name" maxlength="20">
+            <button id="save-score" class="btn">Save Score</button>
+            <button id="retry-btn" class="btn secondary">Try Again</button>
+        </div>
+
+        <!-- High Scores Screen -->
+        <div id="highscores-screen" class="screen hide">
+            <h2>High Scores</h2>
+            <div id="highscores-list" class="highscores-list"></div>
+            <button id="back-btn" class="btn">Back to Start</button>
+            <button id="clear-scores" class="btn secondary">Clear Scores</button>
+        </div>
+    </div>
+    <div class="nezuko-container">
+        <div class="speech-bubble hidden">
+        (Amazing!)
+        </div>
+        
+        <div class="chibi-nezuko hidden">
+            <!-- Hair -->
+            <div class="hair">
+                <div class="hair-back"></div>
+                <div class="hair-front"></div>
+                <div class="hair-strand left"></div>
+                <div class="hair-strand right"></div>
+            </div>
+            
+            <!-- Face -->
+            <div class="face">
+                <div class="eyes">
+                    <div class="eye left"></div>
+                    <div class="eye right"></div>
+                    <div class="eye-smile left"></div>
+                    <div class="eye-smile right"></div>
+                </div>
+                <div class="bamboo-muzzle">
+                    <div class="muzzle-stripe"></div>
+                </div>
+            </div>
+            
+            <!-- Body -->
+            <div class="body">
+                <div class="kimono"></div>
+                <div class="haori"></div>
+                <div class="arm left">
+                    <div class="hand"></div>
+                </div>
+                <div class="arm right">
+                    <div class="hand"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="cat-container">
+        <div class="speech-bubble hidden">
+            Purrfect! Great job! 🎉
+        </div>
+        
+        <div class="chibi-cat hidden">
+            <!-- Ears -->
+            <div class="ears">
+                <div class="ear left"></div>
+                <div class="ear right"></div>
+            </div>
+            
+            <!-- Face -->
+            <div class="face">
+                <!-- Eyes -->
+                <div class="eyes">
+                    <div class="eye left">
+                        <div class="sparkle"></div>
+                    </div>
+                    <div class="eye right">
+                        <div class="sparkle"></div>
+                    </div>
+                </div>
+                
+                <!-- Blush -->
+                <div class="blush left"></div>
+                <div class="blush right"></div>
+                
+                <!-- Nose and Mouth -->
+                <div class="nose"></div>
+                <div class="mouth"></div>
+                
+                <!-- Whiskers -->
+                <div class="whiskers">
+                    <div class="whisker-group left">
+                        <div class="whisker"></div>
+                        <div class="whisker"></div>
+                        <div class="whisker"></div>
+                    </div>
+                    <div class="whisker-group right">
+                        <div class="whisker"></div>
+                        <div class="whisker"></div>
+                        <div class="whisker"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Body -->
+            <div class="body">
+                <!-- Paws -->
+                <div class="paw left"></div>
+                <div class="paw right"></div>
+            </div>
+
+            <!-- Add inside the chibi-cat div -->
+            <div class="bow">
+                <div class="bow-center">
+                    <div class="bow-part bow-left"></div>
+                    <div class="bow-part bow-right"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 

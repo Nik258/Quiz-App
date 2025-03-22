@@ -1,0 +1,1048 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+:root {
+    --primary-color: #000000;
+    --secondary-color: #000033;
+    --accent-color: #0066cc;
+    --correct-color: #006600;
+    --wrong-color: #cc0000;
+    --text-color: #ffffff;
+    --hover-color: #0099ff;
+}
+
+body {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 90%;
+    max-width: 800px;
+    background-color: var(--secondary-color);
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 20px rgba(0, 102, 204, 0.3);
+}
+
+.screen {
+    text-align: center;
+}
+
+.hide {
+    display: none;
+}
+
+h1, h2 {
+    margin-bottom: 2rem;
+    color: var(--text-color);
+    text-shadow: 0 0 10px rgba(0, 102, 204, 0.5);
+}
+
+.btn {
+    background-color: var(--accent-color);
+    color: var(--text-color);
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1.1rem;
+    cursor: pointer;
+    margin: 0.5rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(0, 102, 204, 0.3);
+}
+
+.btn:hover {
+    transform: scale(1.05);
+    background-color: var(--hover-color);
+}
+
+.btn.secondary {
+    background-color: #000066;
+}
+
+.btn.secondary:hover {
+    background-color: #000099;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 10px;
+    background-color: var(--primary-color);
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    box-shadow: 0 0 10px rgba(0, 102, 204, 0.2);
+}
+
+.progress {
+    height: 100%;
+    background-color: var(--accent-color);
+    border-radius: 5px;
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+.quiz-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    color: var(--text-color);
+    font-size: 1.1rem;
+}
+
+.answers-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+@media (min-width: 768px) {
+    .answers-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.answer-btn {
+    background-color: #000066;
+    color: var(--text-color);
+    padding: 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 1rem;
+    box-shadow: 0 0 10px rgba(0, 102, 204, 0.2);
+}
+
+.answer-btn:hover {
+    background-color: var(--accent-color);
+}
+
+.answer-btn.correct {
+    background-color: var(--correct-color);
+}
+
+.answer-btn.wrong {
+    background-color: var(--wrong-color);
+}
+
+.score-details {
+    margin: 2rem 0;
+    font-size: 1.2rem;
+}
+
+#username {
+    padding: 0.8rem;
+    font-size: 1rem;
+    margin: 1rem 0;
+    width: 100%;
+    max-width: 300px;
+    border-radius: 0.5rem;
+    border: none;
+    background-color: #000066;
+    color: var(--text-color);
+    box-shadow: 0 0 10px rgba(0, 102, 204, 0.2);
+}
+
+#username::placeholder {
+    color: #99ccff;
+}
+
+.highscores-list {
+    margin: 2rem 0;
+    text-align: left;
+}
+
+.highscore-item {
+    background-color: #000066;
+    padding: 1rem;
+    margin: 0.5rem 0;
+    border-radius: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0 0 10px rgba(0, 102, 204, 0.2);
+    transition: transform 0.2s ease;
+}
+
+.highscore-item:hover {
+    transform: translateX(5px);
+    background-color: #000099;
+}
+
+/* Additional styling for better visibility */
+.question-container {
+    background-color: #000044;
+    padding: 2rem;
+    border-radius: 0.8rem;
+    margin: 1rem 0;
+    box-shadow: 0 0 15px rgba(0, 102, 204, 0.2);
+}
+
+#question-text {
+    font-size: 1.3rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+/* Glowing effect for active elements */
+.btn:focus, .answer-btn:focus, #username:focus {
+    outline: none;
+    box-shadow: 0 0 15px rgba(0, 153, 255, 0.5);
+}
+
+/* Add these new styles */
+.nezuko-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    display: flex;
+    align-items: flex-end;
+    pointer-events: none;
+}
+
+.nezuko {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+    transform: translateY(200px);
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+
+.nezuko.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.speech-bubble {
+    position: relative;
+    background: #ffffff;
+    border-radius: 15px;
+    padding: 10px 15px;
+    margin-right: 10px;
+    margin-bottom: 40px;
+    font-size: 1.2rem;
+    color: #000;
+    opacity: 0;
+    transform: scale(0);
+    transition: all 0.3s ease;
+}
+
+.speech-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    right: 20px;
+    border-width: 10px 10px 0;
+    border-style: solid;
+    border-color: #ffffff transparent;
+}
+
+.speech-bubble.show {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.hidden {
+    display: none;
+}
+
+/* Animation keyframes */
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Add these to your existing .correct and .wrong classes */
+.answer-btn.correct {
+    background-color: var(--correct-color);
+    animation: correct-answer 0.5s ease;
+}
+
+.answer-btn.wrong {
+    background-color: var(--wrong-color);
+    animation: wrong-answer 0.5s ease;
+}
+
+@keyframes correct-answer {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+@keyframes wrong-answer {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-10px); }
+    40%, 80% { transform: translateX(10px); }
+}
+
+/* Add this to make the container responsive */
+@media (max-width: 768px) {
+    .nezuko-container {
+        bottom: 10px;
+        right: 10px;
+    }
+
+    .nezuko {
+        width: 100px;
+        height: 100px;
+    }
+
+    .speech-bubble {
+        font-size: 1rem;
+        padding: 8px 12px;
+        margin-bottom: 30px;
+    }
+}
+
+/* Updated styles for the cheerful clapping Nezuko */
+.chibi-nezuko {
+    position: relative;
+    width: 200px;
+    height: 250px;
+    transform: translateY(200px);
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+
+.chibi-nezuko.show {
+    transform: translateY(0);
+    opacity: 1;
+    animation: happy-bounce 3s ease-in-out infinite;
+}
+
+/* Hair Styles */
+.hair {
+    position: absolute;
+    width: 100%;
+    height: 140px;
+    top: 0;
+}
+
+.hair-back {
+    position: absolute;
+    width: 120px;
+    height: 140px;
+    background: linear-gradient(180deg, #1a1a1a 60%, #8B0000 100%);
+    border-radius: 60px 60px 30px 30px;
+    left: 40px;
+}
+
+.hair-front {
+    position: absolute;
+    width: 140px;
+    height: 70px;
+    background: #1a1a1a;
+    border-radius: 60px 60px 0 0;
+    left: 30px;
+    top: 20px;
+}
+
+.hair-strand {
+    position: absolute;
+    width: 30px;
+    height: 80px;
+    background: linear-gradient(180deg, #1a1a1a 60%, #8B0000 100%);
+    border-radius: 15px;
+}
+
+.hair-strand.left {
+    left: 25px;
+    transform: rotate(-10deg);
+}
+
+.hair-strand.right {
+    right: 25px;
+    transform: rotate(10deg);
+}
+
+/* Face Styles */
+.face {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: #fff6e6;
+    border-radius: 50%;
+    top: 40px;
+    left: 50px;
+}
+
+.eyes {
+    position: relative;
+    top: 35px;
+    display: flex;
+    justify-content: space-around;
+    padding: 0 15px;
+}
+
+.eye {
+    width: 20px;
+    height: 3px;
+    background: #1a1a1a;
+    border-radius: 50%;
+    position: relative;
+    animation: happy-eyes 4s infinite;
+}
+
+.eye-smile {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    border: 3px solid #1a1a1a;
+    border-radius: 50%;
+    border-top: 0;
+    border-left: 0;
+    transform: rotate(45deg);
+    top: -10px;
+    opacity: 0;
+    animation: show-smile 4s infinite;
+}
+
+.eye-smile.left {
+    left: 10px;
+}
+
+.eye-smile.right {
+    right: 10px;
+}
+
+.bamboo-muzzle {
+    position: absolute;
+    width: 45px;
+    height: 20px;
+    background: #8B4513;
+    border-radius: 10px;
+    bottom: 20px;
+    left: 27px;
+    border: 2px solid #654321;
+}
+
+.muzzle-stripe {
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    background: #654321;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Body and Arms */
+.body {
+    position: absolute;
+    top: 120px;
+    width: 100%;
+}
+
+.kimono {
+    position: absolute;
+    width: 120px;
+    height: 100px;
+    background: #FFB7C5;
+    border-radius: 30px 30px 20px 20px;
+    left: 40px;
+}
+
+.haori {
+    position: absolute;
+    width: 140px;
+    height: 80px;
+    background: #1a1a1a;
+    border-radius: 20px;
+    left: 30px;
+    top: 10px;
+}
+
+.arm {
+    position: absolute;
+    width: 30px;
+    height: 60px;
+    background: #FFB7C5;
+    top: 20px;
+    border-radius: 15px;
+    transform-origin: top center;
+    animation: clap 1s infinite;
+}
+
+.arm.left {
+    left: 30px;
+    animation-delay: 0.5s;
+}
+
+.arm.right {
+    right: 30px;
+}
+
+.hand {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    background: #fff6e6;
+    border-radius: 50%;
+    bottom: -5px;
+    left: 2.5px;
+}
+
+/* Animations */
+@keyframes happy-bounce {
+    0%, 100% {
+        transform: translateY(0) rotate(-3deg);
+    }
+    50% {
+        transform: translateY(-10px) rotate(3deg);
+    }
+}
+
+@keyframes happy-eyes {
+    0%, 90%, 100% {
+        height: 3px;
+        background: #1a1a1a;
+    }
+    95% {
+        height: 3px;
+        background: transparent;
+    }
+}
+
+@keyframes show-smile {
+    0%, 40%, 60%, 100% {
+        opacity: 0;
+    }
+    45%, 55% {
+        opacity: 1;
+    }
+}
+
+@keyframes clap {
+    0%, 100% {
+        transform: rotate(-20deg);
+    }
+    50% {
+        transform: rotate(20deg);
+    }
+}
+
+/* Speech bubble updates */
+.speech-bubble {
+    background: #FFB7C5;
+    color: #1a1a1a;
+    font-weight: bold;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    font-size: 1.2em;
+}
+
+.speech-bubble::after {
+    border-color: #FFB7C5 transparent;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .chibi-nezuko {
+        transform: scale(0.7);
+        transform-origin: bottom right;
+    }
+}
+
+/* Updated cat container and positioning */
+.cat-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    pointer-events: none;
+}
+
+/* Make cat smaller */
+.chibi-cat {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    transform: translateY(100px);
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+
+/* Hello Kitty inspired styles */
+.face {
+    position: absolute;
+    width: 60px;
+    height: 50px;
+    background: #ffffff;
+    border-radius: 50%;
+    top: 15px;
+    left: 20px;
+}
+
+/* Smaller ears */
+.ears {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 15px;
+}
+
+.ear {
+    width: 20px;
+    height: 20px;
+    background: #000000;
+    border-radius: 10px 10px 0 0;
+    position: relative;
+}
+
+/* Remove ear inner part for Hello Kitty style */
+.ear:before {
+    display: none;
+}
+
+/* Simplified eyes */
+.eyes {
+    position: relative;
+    top: 20px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.eye {
+    width: 6px;
+    height: 6px;
+    background: #000000;
+    width: 30px;
+    height: 30px;
+    background: #ffffff;
+    border-radius: 50%;
+    position: relative;
+    animation: blink 4s infinite;
+}
+
+.sparkle {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: #000000;
+    border-radius: 50%;
+    top: 5px;
+    left: 5px;
+    animation: sparkle 2s infinite;
+}
+
+/* Blush */
+.blush {
+    position: absolute;
+    width: 25px;
+    height: 15px;
+    background: #ffb6c1;
+    border-radius: 50%;
+    opacity: 0.6;
+    top: 45px;
+}
+
+.blush.left {
+    left: 15px;
+}
+
+.blush.right {
+    right: 15px;
+}
+
+/* Nose and Mouth */
+.nose {
+    position: absolute;
+    width: 15px;
+    height: 10px;
+    background: #ff69b4;
+    border-radius: 50%;
+    top: 50px;
+    left: 52px;
+}
+
+.mouth {
+    position: absolute;
+    width: 30px;
+    height: 20px;
+    border: 3px solid #000000;
+    border-radius: 0 0 15px 15px;
+    border-top: 0;
+    top: 60px;
+    left: 45px;
+}
+
+/* Whiskers */
+.whiskers {
+    position: absolute;
+    width: 100%;
+    top: 50px;
+}
+
+.whisker-group {
+    position: absolute;
+    width: 40px;
+    height: 30px;
+}
+
+.whisker-group.left {
+    left: -30px;
+}
+
+.whisker-group.right {
+    right: -30px;
+}
+
+.whisker {
+    width: 40px;
+    height: 2px;
+    background: #000000;
+    margin: 8px 0;
+    border-radius: 2px;
+}
+
+.whisker-group.left .whisker {
+    transform-origin: right center;
+}
+
+.whisker-group.right .whisker {
+    transform-origin: left center;
+}
+
+.whisker-group.left .whisker:nth-child(1) { transform: rotate(-10deg); }
+.whisker-group.left .whisker:nth-child(3) { transform: rotate(10deg); }
+.whisker-group.right .whisker:nth-child(1) { transform: rotate(10deg); }
+.whisker-group.right .whisker:nth-child(3) { transform: rotate(-10deg); }
+
+/* Body and Paws */
+.body {
+    position: absolute;
+    width: 140px;
+    height: 100px;
+    background: #f4a460;
+    border-radius: 70px 70px 35px 35px;
+    top: 100px;
+    left: 30px;
+}
+
+.paw {
+    position: absolute;
+    width: 40px;
+    height: 30px;
+    background: #f4a460;
+    border-radius: 20px;
+    bottom: -10px;
+}
+
+.paw.left {
+    left: 20px;
+    animation: wave-left 2s infinite;
+}
+
+.paw.right {
+    right: 20px;
+    animation: wave-right 2s infinite;
+}
+
+/* Speech Bubble */
+.speech-bubble {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 15px;
+    margin-right: 20px;
+    margin-bottom: 40px;
+    font-size: 1.2em;
+    color: #333333;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    opacity: 0;
+    transform: scale(0);
+    transition: all 0.3s ease;
+}
+
+.speech-bubble.show {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.speech-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    right: 20px;
+    border-width: 10px 10px 0;
+    border-style: solid;
+    border-color: #ffffff transparent;
+}
+
+/* Animations */
+@keyframes cat-bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes blink {
+    0%, 45%, 55%, 100% {
+        transform: scaleY(1);
+    }
+    50% {
+        transform: scaleY(0.1);
+    }
+}
+
+@keyframes sparkle {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+@keyframes wave-left {
+    0%, 100% {
+        transform: rotate(-20deg);
+    }
+    50% {
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes wave-right {
+    0%, 100% {
+        transform: rotate(20deg);
+    }
+    50% {
+        transform: rotate(0deg);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .chibi-cat {
+        transform: scale(0.7);
+        transform-origin: bottom right;
+    }
+    
+    .speech-bubble {
+        font-size: 1rem;
+        padding: 10px;
+        margin-bottom: 30px;
+    }
+}
+
+/* Add these new styles for the welcome cat */
+.welcome-cat {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto 30px;
+    position: relative;
+}
+
+.cat-illustration {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.cat-head {
+    position: relative;
+    width: 150px;
+    height: 130px;
+    background: #FFA500; /* Orange color */
+    border-radius: 50%;
+    margin: 0 auto;
+}
+
+.cat-ears {
+    position: absolute;
+    width: 100%;
+    top: -20px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.ear {
+    width: 45px;
+    height: 45px;
+    background: #FFA500;
+    border-radius: 10px 45px 0 0;
+    position: relative;
+}
+
+.ear:after {
+    content: '';
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    background: #FFC966; /* Lighter orange for inner ear */
+    border-radius: 8px 35px 0 0;
+    top: 5px;
+    left: 5px;
+}
+
+.cat-face {
+    position: relative;
+    padding-top: 40px;
+}
+
+.eyes {
+    display: flex;
+    justify-content: space-around;
+    margin: 0 20px;
+}
+
+.eye {
+    width: 30px;
+    height: 30px;
+    background: #4A4A4A;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+}
+
+.eye:before {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: #ffffff;
+    border-radius: 50%;
+    top: 5px;
+    left: 5px;
+}
+
+.nose {
+    width: 15px;
+    height: 10px;
+    background: #FF9999; /* Pink nose */
+    border-radius: 50%;
+    margin: 10px auto 5px;
+}
+
+.mouth {
+    width: 20px;
+    height: 10px;
+    border: 3px solid #4A4A4A;
+    border-radius: 0 0 20px 20px;
+    border-top: 0;
+    margin: 0 auto;
+}
+
+.cat-body {
+    position: relative;
+    width: 140px;
+    height: 80px;
+    background: #FFA500;
+    border-radius: 70px 70px 35px 35px;
+    margin: -20px auto 0;
+}
+
+.chest {
+    position: absolute;
+    width: 80px;
+    height: 60px;
+    background: #FFFFFF;
+    border-radius: 40px;
+    bottom: 0;
+    left: 30px;
+}
+
+.tail {
+    position: absolute;
+    width: 20px;
+    height: 80px;
+    background: #FFA500;
+    border-radius: 10px;
+    bottom: 20px;
+    right: -10px;
+    transform-origin: bottom center;
+    animation: tail-wave 3s infinite ease-in-out;
+}
+
+/* Add animation for tail movement */
+@keyframes tail-wave {
+    0%, 100% {
+        transform: rotate(-10deg);
+    }
+    50% {
+        transform: rotate(10deg);
+    }
+}
+
+/* Add animation for blinking eyes */
+@keyframes blink {
+    0%, 45%, 55%, 100% {
+        transform: scaleY(1);
+    }
+    50% {
+        transform: scaleY(0.1);
+    }
+}
+
+.eye {
+    animation: blink 4s infinite;
+}
+
+/* Update start screen styles */
+#start-screen {
+    text-align: center;
+    padding: 20px;
+}
+
+#start-screen h1 {
+    color: #ffffff;
+    margin-bottom: 30px;
+    font-size: 2.5em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Add hover effect for the cat */
+.welcome-cat:hover .tail {
+    animation: tail-wave 1.5s infinite ease-in-out;
+}
+
+.welcome-cat:hover .cat-head {
+    transform: rotate(5deg);
+    transition: transform 0.3s ease;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .welcome-cat {
+        width: 150px;
+        height: 150px;
+    }
+
+    .cat-head {
+        width: 120px;
+        height: 100px;
+    }
+
+    .cat-body {
+        width: 110px;
+        height: 60px;
+    }
+
+    #start-screen h1 {
+        font-size: 2em;
+    }
+}
