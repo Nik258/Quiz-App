@@ -2,7 +2,7 @@ Interactive Quiz App
 An engaging and interactive quiz application that challenges users with multiple-choice questions, tracks their scores, and maintains a high-score list using local storage. The app is designed with a clean and responsive UI, making it accessible across different devices.
 
 ## 🌍 Live Demo  
-Check out the quiz app here: [Live Demo](https://github.com/Nik258/Quiz-App.git)  
+Check out the quiz app here: [Live Demo](https://nik258.github.io/Quiz-App/)  
 
 🚀 FEATURES:
 
