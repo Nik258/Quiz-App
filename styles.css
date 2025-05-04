@@ -16,21 +16,29 @@
 }
 
 body {
-    background-color: var(--primary-color);
+    margin: 0;
+    padding: 0;
+    background-image: url('images/quizzimg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     color: var(--text-color);
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-}
+    font-family: Arial, sans-serif;
+  }
+  
+  
 
 .container {
     width: 90%;
     max-width: 800px;
-    background-color: var(--secondary-color);
+    background-color: var(transparent);
     padding: 2rem;
     border-radius: 1rem;
-    box-shadow: 0 0 20px rgba(0, 102, 204, 0.3);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
 }
 
 .screen {
@@ -66,11 +74,11 @@ h1, h2 {
 }
 
 .btn.secondary {
-    background-color: #000066;
+    background-color: #160455;
 }
 
 .btn.secondary:hover {
-    background-color: #000099;
+    background-color: #01013b;
 }
 
 .progress-bar {
@@ -1006,6 +1014,23 @@ h1, h2 {
 #start-screen {
     text-align: center;
     padding: 20px;
+    background: url('cherry-garden.jpg') center center/cover no-repeat;
+    min-height: 100vh;
+    position: relative;
+    z-index: 1;
+}
+
+#start-screen::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.35); /* Optional: dark overlay for readability */
+    z-index: 2;
+}
+
+#start-screen > * {
+    position: relative;
+    z-index: 3;
 }
 
 #start-screen h1 {
